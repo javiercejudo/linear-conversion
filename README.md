@@ -4,11 +4,15 @@
 [![Coverage Status](https://coveralls.io/repos/javiercejudo/linear-conversion/badge.svg?branch=master)](https://coveralls.io/r/javiercejudo/linear-conversion?branch=master)
 [![Code Climate](https://codeclimate.com/github/javiercejudo/linear-conversion/badges/gpa.svg)](https://codeclimate.com/github/javiercejudo/linear-conversion)
 
-Linear preset class
+Linear conversion class for *[linear-converter](https://github.com/javiercejudo/linear-converter)*
 
 ## Install
 
     npm i linear-conversion
+    
+## Usage
+
+See [CodePen example](http://codepen.io/javiercejudo/pen/bdoBvW?editors=101).
 
 ## See more
 
