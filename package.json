@@ -1,6 +1,6 @@
 {
   "name": "linear-conversion",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Linear presets for converting common units",
   "main": "src/linear-conversion.js",
   "scripts": {
