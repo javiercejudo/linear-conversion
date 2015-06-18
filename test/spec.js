@@ -7,18 +7,14 @@ var LinearConversion = require('../src/linear-conversion');
 
 describe('LinearConversion', function() {
   it('Just Works™', function() {
-    var double;
-
-    double = new LinearConversion([[0, 1], [0, 2]]);
+    var double = new LinearConversion([[0, 1], [0, 2]]);
 
     double.convert(50).should.be.exactly(100);
     double.invert().convert(100).should.be.exactly(50);
     double.convert(50).should.be.exactly(100);
 
 
-    var fourthMinus2;
-
-    fourthMinus2 = new LinearConversion([[0, 4], [-2, -1]]);
+    var fourthMinus2 = new LinearConversion([[0, 4], [-2, -1]]);
 
     fourthMinus2.convert(100).should.be.exactly(23);
     fourthMinus2.invert().convert(23).should.be.exactly(100);
@@ -41,7 +37,6 @@ describe('LinearConversion', function() {
     var timesMinus3 = new LinearConversion([[0, 1], [0, -3]]);
 
     timesMinus3.compose([timesMinus3]).convert(1).should.be.exactly(9);
-
     timesMinus3.compose([timesMinus3, timesMinus3]).convert(1)
       .should.be.exactly(-27);
   });
