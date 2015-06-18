@@ -1,9 +1,9 @@
 language: node_js
 node_js:
   - 'iojs'
+  - '0.10'
+  - '0.12'
 before_install:
   - npm install -g gulp
-script:
-  - gulp test
 after_success:
   - gulp coveralls
