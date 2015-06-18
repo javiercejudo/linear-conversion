@@ -36,7 +36,7 @@ proto.getCoefficientA = function getCoefficientA() {
   return lc.getCoefficientA(this.getConversion());
 };
 
-proto.getCoefficientB = function getCoefficientB(presets) {
+proto.getCoefficientB = function getCoefficientB() {
   return lc.getCoefficientB(this.getConversion());
 };
 
