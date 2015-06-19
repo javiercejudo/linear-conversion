@@ -22,10 +22,10 @@ proto.invert = function invert() {
   return new LinearConversion(lc.invertPreset(this.getConversion()));
 };
 
-proto.compose = function compose(LinearConversions) {
+proto.compose = function compose(linearConversions) {
   var presets = [this.getConversion()].concat(
-    LinearConversions.map(function(LinearConversion) {
-      return LinearConversion.getConversion();
+    linearConversions.map(function(linearConversion) {
+      return linearConversion.getConversion();
     })
   );
 
