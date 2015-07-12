@@ -32,6 +32,7 @@
     "should": "^5.0.0"
   },
   "dependencies": {
-    "linear-converter": "^1.2.0"
+    "floating-adapter": "^1.0.0",
+    "linear-converter": "^3.0.1"
   }
 }

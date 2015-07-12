@@ -14,7 +14,7 @@ Linear conversion class for *[linear-converter](https://github.com/javiercejudo/
 
 ```js
 var PRESETS = require('linear-presets').PRESETS;
-var LinearConversion = require('linear-conversion');
+var LinearConversion = require('linear-conversion')(require('floating-converter'));
 
 var celsiusToFahrenheit = new LinearConversion(PRESETS.temperature.celsiusToFahrenheit);
 

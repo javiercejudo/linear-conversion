@@ -2,8 +2,9 @@
 
 'use strict';
 
-var should = require('should');
-var LinearConversion = require('../src/linear-conversion');
+require('should');
+
+var LinearConversion = require('../src/linear-conversion')(require('floating-adapter'));
 
 describe('LinearConversion', function() {
   it('Just Works™', function() {
@@ -26,7 +27,11 @@ describe('LinearConversion', function() {
     var halfMinus4 = fourthMinus2.compose([double]);
 
     halfMinus4.convert(100).should.be.exactly(46);
-    halfMinus4.toString().should.equal('0,4,-4,-2');
+
+    halfMinus4.toString().should.be.exactly([[0,4],[-4,-2]].toString());
+
+    JSON.stringify(halfMinus4).should.be.exactly('[[0,4],[-4,-2]]');
+    JSON.parse('[[0,4],[-4,-2]]', LinearConversion.reviver).should.eql(halfMinus4);
 
 
     var plus1 = new LinearConversion([[0, -1], [1, 0]]);
