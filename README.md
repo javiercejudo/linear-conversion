@@ -14,7 +14,7 @@ Linear conversion class for *[linear-converter](https://github.com/javiercejudo/
 
 ```js
 var PRESETS = require('linear-presets').PRESETS;
-var LinearConversion = require('linear-conversion')(require('floating-converter'));
+var LinearConversion = require('linear-conversion')(require('floating-adapter'));
 
 var celsiusToFahrenheit = new LinearConversion(PRESETS.temperature.celsiusToFahrenheit);
 
@@ -88,19 +88,20 @@ timesAPlusB.getCoefficientB(); // => b
 
 ## Arbitrary precision
 
-By default, *linear-conversion* works with native floating-point numbers.
-However, it will work with arbitrary precision if
-[big.js](https://github.com/MikeMcl/big.js) is available;
+Arbitrary precision support is provided via [linear-arbitrary-precision](https://github.com/javiercejudo/linear-arbitrary-precision).
+See [all available adapters](https://www.npmjs.com/browse/keyword/linear-arbitrary-precision-adapter).
 
 ```js
 var doublePlusPoint1 = new LinearConversion([[0, 0.1], [0.1, 0.3]]);
 
-// without big.js
+// without arbitrary precision adapters
 doublePlusPoint1.getCoefficientA(); // => 1.9999999999999998
 
-// with big.js
+// with arbitrary precision adapters
 doublePlusPoint1.getCoefficientA(); // => 2
 ```
+
+See [CodePen example](http://codepen.io/javiercejudo/pen/yNEoWq?editors=101)
 
 In the browser, you will need to generate a bundled *big.js* package by
 running the following command:
