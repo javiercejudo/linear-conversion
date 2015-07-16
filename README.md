@@ -101,16 +101,7 @@ doublePlusPoint1.getCoefficientA(); // => 1.9999999999999998
 doublePlusPoint1.getCoefficientA(); // => 2
 ```
 
-See [CodePen example](http://codepen.io/javiercejudo/pen/yNEoWq?editors=101)
-
-In the browser, you will need to generate a bundled *big.js* package by
-running the following command:
-
-    browserify -r node_modules/big.js/big.js:big.js > browserified-big.js
-
-Alternatively, grab it from https://wzrd.in/bundle/big.js.
-
-Then simply include that file before *linear-conversion*.
+See [CodePen example](http://codepen.io/javiercejudo/pen/yNEoWq?editors=101).
 
 ## See more
 
