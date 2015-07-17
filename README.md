@@ -13,10 +13,10 @@ Linear conversion class for *[linear-converter](https://github.com/javiercejudo/
 ## Basic usage
 
 ```js
-var PRESETS = require('linear-presets').PRESETS;
+var temp = require('linear-presets-temperature');
 var LinearConversion = require('linear-conversion')(require('floating-adapter'));
 
-var celsiusToFahrenheit = new LinearConversion(PRESETS.temperature.celsiusToFahrenheit);
+var celsiusToFahrenheit = new LinearConversion(temp.celsiusToFahrenheit);
 
 celsiusToFahrenheit.convert(25); // => 77
 ```
@@ -34,7 +34,7 @@ fahrenheitToCelsius.convert(77); // => 25
 ## Conversion composition
 
 ```js
-var celsiusToKelvin = new LinearConversion(PRESETS.temperature.celsiusToKelvin);
+var celsiusToKelvin = new LinearConversion(temp.celsiusToKelvin);
 var kelvinToFahrenheit = celsiusToKelvin.invert().compose([celsiusToFahrenheit]);
 
 kelvinToFahrenheit.convert(293.15); // => 68
