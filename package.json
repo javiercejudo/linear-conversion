@@ -1,7 +1,7 @@
 {
   "name": "linear-conversion",
   "version": "2.0.3",
-  "description": "Linear presets for converting common units",
+  "description": "Linear conversion class for linear-converter",
   "main": "src/linear-conversion.js",
   "scripts": {
     "test": "gulp test"
