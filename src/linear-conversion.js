@@ -28,11 +28,7 @@ module.exports = function factory(adapter) {
   };
 
   proto.compose = function compose(linearConversions) {
-    var presets = [this.getConversion()].concat(
-      linearConversions.map(function(linearConversion) {
-        return linearConversion.getConversion();
-      })
-    );
+    var presets = getConversions([this].concat(linearConversions));
 
     return new LinearConversion(lc.composePresets(presets));
   };
@@ -45,6 +41,12 @@ module.exports = function factory(adapter) {
     return lc.getCoefficientB(this.getConversion());
   };
 
+  proto.equates = function equates(linearConversions) {
+    var presets = getConversions([this].concat(linearConversions));
+
+    return lc.equivalentPresets(presets);
+  };
+
   proto.valueOf = proto.toJSON = function toString() {
     return this.getConversion();
   };
@@ -54,4 +56,12 @@ module.exports = function factory(adapter) {
   };
 
   return LinearConversion;
+}
+
+function getConversion(linearConversion) {
+  return linearConversion.getConversion();
+}
+
+function getConversions(linearConversions) {
+  return linearConversions.map(getConversion);
 }

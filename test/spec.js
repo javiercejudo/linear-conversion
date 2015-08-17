@@ -44,5 +44,19 @@ describe('LinearConversion', function() {
     timesMinus3.compose([timesMinus3]).convert(1).should.be.exactly(9);
     timesMinus3.compose([timesMinus3, timesMinus3]).convert(1)
       .should.be.exactly(-27);
+
+
+    var eq = new LinearConversion([[1, 5], [3, -9]]);
+
+    eq.equates([
+      new LinearConversion([[0, 2], [6, 0]]),
+      new LinearConversion([[-1, 100], [9, -294]])
+    ]).should.be.exactly(true);
+
+    var notEq = new LinearConversion([[0, 1], [0, 2]]);
+
+    eq.equates([
+      new LinearConversion([[0, 1], [0, 3]])
+    ]).should.be.exactly(false);
   });
 });

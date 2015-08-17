@@ -13,7 +13,7 @@ Linear conversion class for *[linear-converter](https://github.com/javiercejudo/
 ## Basic usage
 
 ```js
-var temp = require('linear-presets-temperature');
+var temp = require('linear-presets').PRESETS.temperature;
 var LinearConversion = require('linear-conversion')(require('floating-adapter'));
 
 var celsiusToFahrenheit = new LinearConversion(temp.celsiusToFahrenheit);
@@ -84,6 +84,23 @@ var timesAPlusB = new LinearConversion([[x1, x2], [f(x1), f(x2)]]);
 
 timesAPlusB.getCoefficientA(); // => a
 timesAPlusB.getCoefficientB(); // => b
+```
+
+## Preset equivalence
+
+```js
+var eq = new LinearConversion([[1, 5], [3, -9]]);
+
+eq.equates([ // all f(x) = -3 * (x - 2)
+  new LinearConversion([[0, 2], [6, 0]]),
+  new LinearConversion([[-1, 100], [9, -294]])
+]); // => true
+
+var notEq = new LinearConversion([[0, 1], [0, 2]]); // f(x) = 2x
+
+eq.equates([
+  new LinearConversion([[0, 1], [0, 3]]) // f(x) = 3x
+]); // => false
 ```
 
 ## Arbitrary precision
