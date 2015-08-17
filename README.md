@@ -123,7 +123,7 @@ See [CodePen example](http://codepen.io/javiercejudo/pen/yNEoWq?editors=101).
 ## See more
 
 - [tests](test/spec.js)
-- [all presets](https://github.com/javiercejudo/linear-presets/blob/master/data/presets.json)
+- [all presets](https://github.com/javiercejudo/linear-presets#presets)
 
 ## Related projects
 
