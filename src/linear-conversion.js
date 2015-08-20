@@ -4,8 +4,8 @@
 
 var lcFactory = require('linear-converter');
 
-module.exports = function factory(adapter) {
-  var lc = lcFactory(adapter);
+module.exports = function factory(Decimal) {
+  var lc = lcFactory(Decimal);
 
   function LinearConversion(conversion) {
     this.getConversion = function getConversion() {
@@ -27,10 +27,10 @@ module.exports = function factory(adapter) {
     return new LinearConversion(lc.invertPreset(this.getConversion()));
   };
 
-  proto.compose = function compose(linearConversions) {
-    var presets = getConversions([this].concat(linearConversions));
+  proto.compose = function compose(linearConversion) {
+    var composition = lc.composePresets(this.getConversion(), linearConversion.getConversion());
 
-    return new LinearConversion(lc.composePresets(presets));
+    return new LinearConversion(composition);
   };
 
   proto.getCoefficientA = function getCoefficientA() {
@@ -41,10 +41,8 @@ module.exports = function factory(adapter) {
     return lc.getCoefficientB(this.getConversion());
   };
 
-  proto.equates = function equates(linearConversions) {
-    var presets = getConversions([this].concat(linearConversions));
-
-    return lc.equivalentPresets(presets);
+  proto.equates = function equates(linearConversion) {
+    return lc.equivalentPresets(this.getConversion(), linearConversion.getConversion());
   };
 
   proto.valueOf = proto.toJSON = function toString() {
@@ -56,12 +54,4 @@ module.exports = function factory(adapter) {
   };
 
   return LinearConversion;
-}
-
-function getConversion(linearConversion) {
-  return linearConversion.getConversion();
-}
-
-function getConversions(linearConversions) {
-  return linearConversions.map(getConversion);
 }
