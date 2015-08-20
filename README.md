@@ -13,12 +13,14 @@ Linear conversion class for *[linear-converter](https://github.com/javiercejudo/
 ## Basic usage
 
 ```js
+var Decimal = require('linear-arbitrary-precision')(require('floating-adapter'));
+var LinearConversion = require('linear-conversion')(Decimal);
+
 var temp = require('linear-presets').PRESETS.temperature;
-var LinearConversion = require('linear-conversion')(require('floating-adapter'));
 
 var celsiusToFahrenheit = new LinearConversion(temp.celsiusToFahrenheit);
 
-celsiusToFahrenheit.convert(25); // => 77
+celsiusToFahrenheit.convert(25); // => new Decimal('77')
 ```
 
 See [CodePen example](http://codepen.io/javiercejudo/pen/bdoBvW?editors=101) for a quick interactive intro.
@@ -28,7 +30,7 @@ See [CodePen example](http://codepen.io/javiercejudo/pen/bdoBvW?editors=101) for
 ```js
 var fahrenheitToCelsius = celsiusToFahrenheit.invert();
 
-fahrenheitToCelsius.convert(77); // => 25
+fahrenheitToCelsius.convert(77); // => 25 (as decimal)
 ```
 
 ## Conversion composition
@@ -37,7 +39,7 @@ fahrenheitToCelsius.convert(77); // => 25
 var celsiusToKelvin = new LinearConversion(temp.celsiusToKelvin);
 var kelvinToFahrenheit = celsiusToKelvin.invert().compose([celsiusToFahrenheit]);
 
-kelvinToFahrenheit.convert(293.15); // => 68
+kelvinToFahrenheit.convert(293.15); // => 68 (as decimal)
 ```
 
 ## Custom conversions
