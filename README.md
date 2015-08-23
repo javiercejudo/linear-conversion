@@ -37,7 +37,7 @@ fahrenheitToCelsius.convert(77); // => 25 (as decimal)
 
 ```js
 var celsiusToKelvin = new LinearConversion(temp.celsiusToKelvin);
-var kelvinToFahrenheit = celsiusToKelvin.invert().compose([celsiusToFahrenheit]);
+var kelvinToFahrenheit = celsiusToKelvin.invert().compose(celsiusToFahrenheit);
 
 kelvinToFahrenheit.convert(293.15); // => 68 (as decimal)
 ```
@@ -93,16 +93,12 @@ timesAPlusB.getCoefficientB(); // => b
 ```js
 var eq = new LinearConversion([[1, 5], [3, -9]]);
 
-eq.equates([ // all f(x) = -3 * (x - 2)
-  new LinearConversion([[0, 2], [6, 0]]),
-  new LinearConversion([[-1, 100], [9, -294]])
-]); // => true
+eq.equates(new LinearConversion([[-1, 100], [9, -294]])); // => true (both f(x) = -3x + 6)
+
 
 var notEq = new LinearConversion([[0, 1], [0, 2]]); // f(x) = 2x
 
-eq.equates([
-  new LinearConversion([[0, 1], [0, 3]]) // f(x) = 3x
-]); // => false
+notEq.equates(new LinearConversion([[0, 1], [0, 3]])); // => false (new one is f(x) = 3x)
 ```
 
 ## Arbitrary precision
