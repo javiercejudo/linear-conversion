@@ -4,7 +4,7 @@
 
 require('should');
 
-var Decimal = require('linear-arbitrary-precision')(require('floating-adapter'));
+var Decimal = require('arbitrary-precision')(require('floating-adapter'));
 var LinearConversion = require('../src/linear-conversion')(Decimal);
 
 describe('LinearConversion', function() {

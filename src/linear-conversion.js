@@ -20,7 +20,7 @@ module.exports = function factory(Decimal) {
   var proto = LinearConversion.prototype;
 
   proto.convert = function convert(x) {
-    return lc.convert(x, this.getConversion());
+    return lc.convert(this.getConversion(), x);
   };
 
   proto.invert = function invert() {
