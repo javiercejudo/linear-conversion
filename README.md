@@ -13,7 +13,7 @@ Linear conversion class for *[linear-converter](https://github.com/javiercejudo/
 ## Basic usage
 
 ```js
-var Decimal = require('linear-arbitrary-precision')(require('floating-adapter'));
+var Decimal = require('arbitrary-precision')(require('floating-adapter'));
 var LinearConversion = require('linear-conversion')(Decimal);
 
 var temp = require('linear-presets').PRESETS.temperature;
@@ -103,8 +103,8 @@ notEq.equates(new LinearConversion([[0, 1], [0, 3]])); // => false (new one is f
 
 ## Arbitrary precision
 
-Arbitrary precision support is provided via [linear-arbitrary-precision](https://github.com/javiercejudo/linear-arbitrary-precision).
-See [all available adapters](https://www.npmjs.com/browse/keyword/linear-arbitrary-precision-adapter).
+Arbitrary precision support is provided via [arbitrary-precision](https://github.com/javiercejudo/arbitrary-precision).
+See [all available adapters](https://www.npmjs.com/browse/keyword/arbitrary-precision-adapter).
 
 ```js
 var doublePlusPoint1 = new LinearConversion([[0, 0.1], [0.1, 0.3]]);
