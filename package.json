@@ -34,6 +34,6 @@
     "should": "7.1.0"
   },
   "dependencies": {
-    "linear-converter": "6.0.3"
+    "linear-converter": "6.0.4"
   }
 }
