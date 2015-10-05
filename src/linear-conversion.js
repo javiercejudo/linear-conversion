@@ -24,11 +24,11 @@ module.exports = function factory(Decimal) {
   };
 
   proto.invert = function invert() {
-    return new LinearConversion(lc.invertPreset(this.getConversion()));
+    return new LinearConversion(lc.invertConversion(this.getConversion()));
   };
 
   proto.compose = function compose(linearConversion) {
-    var composition = lc.composePresets(this.getConversion(), linearConversion.getConversion());
+    var composition = lc.composeConversions(this.getConversion(), linearConversion.getConversion());
 
     return new LinearConversion(composition);
   };
@@ -42,7 +42,7 @@ module.exports = function factory(Decimal) {
   };
 
   proto.equates = function equates(linearConversion) {
-    return lc.equivalentPresets(this.getConversion(), linearConversion.getConversion());
+    return lc.equivalentConversions(this.getConversion(), linearConversion.getConversion());
   };
 
   proto.valueOf = proto.toJSON = function toString() {
@@ -54,4 +54,4 @@ module.exports = function factory(Decimal) {
   };
 
   return LinearConversion;
-}
+};
