@@ -45,7 +45,7 @@ module.exports = function factory(Decimal) {
     return lc.equivalentConversions(this.getConversion(), linearConversion.getConversion());
   };
 
-  proto.valueOf = proto.toJSON = function toString() {
+  proto.valueOf = proto.toJSON = function valueOf() {
     return this.getConversion();
   };
 
