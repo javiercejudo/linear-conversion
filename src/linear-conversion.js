@@ -2,11 +2,7 @@
 
 'use strict';
 
-var lcFactory = require('linear-converter');
-
-module.exports = function factory(Decimal) {
-  var lc = lcFactory(Decimal);
-
+module.exports = function factory(lc) {
   function LinearConversion(conversion) {
     this.getConversion = function getConversion() {
       return conversion;

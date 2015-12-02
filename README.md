@@ -13,9 +13,11 @@ Linear conversion class for *[linear-converter](https://github.com/javiercejudo/
 ## Basic usage
 
 ```js
-var Decimal = require('arbitrary-precision')(require('floating-adapter'));
-var LinearConversion = require('linear-conversion')(Decimal);
+var Decimal = require('linear-arbitrary-precision')(require('floating-adapter'));
+var lc = require('linear-converter')(Decimal);
+var LinearConversion = require('linear-conversion')(lc);
 
+// using linear-presets@1.x
 var temp = require('linear-presets').PRESETS.temperature;
 
 var celsiusToFahrenheit = new LinearConversion(temp.celsiusToFahrenheit);
@@ -24,6 +26,18 @@ celsiusToFahrenheit.convert(25); // => new Decimal('77')
 ```
 
 See [CodePen example](http://codepen.io/javiercejudo/pen/bdoBvW?editors=101) for a quick interactive intro.
+
+A simpler (although less flexible) setup is possible using
+[linear-converter-to-go](https://github.com/javiercejudo/linear-converter-to-go):
+
+```js
+var lc = require('linear-converter-to-go');
+var LinearConversion = require('linear-conversion')(lc);
+
+// notice that in this case, the presets for common units are bundled
+// linear-presets@3.x or higher
+var temp = lc.PRESETS.temperature;
+```
 
 ## Conversion inversion
 
@@ -44,7 +58,7 @@ kelvinToFahrenheit.convert(293.15); // => 68 (as decimal)
 
 ## Custom conversions
 
-Custom conversions are easily achieved by passing an array with 2 scales, each
+Custom conversions are achieved by passing an array with 2 scales, each
 of those an array with 2 values. For example, **[[0, 1], [0, 2]]** means that 0 and
 1 in the first scale map to 0 and 2 in the second scale respectively; in short,
 it multiplies by 2. Any linear conversion can be described that way:
@@ -71,8 +85,6 @@ More examples:
 ```
 
 ## Coefficients
-
-Creating presets from a given function is trivial; to find the function from a given preset, two methods are provided: `getCoefficientA` and `getCoefficientB`.
 
 ```js
 // f(x) = 2x + 1
@@ -103,8 +115,8 @@ notEq.equates(new LinearConversion([[0, 1], [0, 3]])); // => false (new one is f
 
 ## Arbitrary precision
 
-Arbitrary precision support is provided via [arbitrary-precision](https://github.com/javiercejudo/arbitrary-precision).
-See [all available adapters](https://www.npmjs.com/browse/keyword/arbitrary-precision-adapter).
+Arbitrary precision support is provided via [linear-arbitrary-precision](https://github.com/javiercejudo/linear-arbitrary-precision).
+See [all available adapters](https://www.npmjs.com/browse/keyword/linear-arbitrary-precision-adapter).
 
 ```js
 var doublePlusPoint1 = new LinearConversion([[0, 0.1], [0.1, 0.3]]);
