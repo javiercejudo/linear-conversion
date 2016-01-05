@@ -32,7 +32,7 @@
     "linear-arbitrary-precision": "^3.4.0",
     "linear-converter": "^7.1.0",
     "linear-preset-to-decimal": "^1.2.0",
-    "rimraf": "^2.4.3",
+    "rimraf": "^2.5.0",
     "should": "^8.0.1"
   }
 }
